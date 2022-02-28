@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="au.com.cashapp.onlinebank.unit.service.TransactionServiceTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2022-02-28T04:45:13" hostname="CMM-C02YN0M7JGH5" time="0.195">
+  <properties/>
+  <testcase name="testCreateNewTransactionWith_InvalidAccountId()" classname="au.com.cashapp.onlinebank.unit.service.TransactionServiceTest" time="0.145"/>
+  <testcase name="testCreateNewTransactionWith_Debit_Transaction_Type()" classname="au.com.cashapp.onlinebank.unit.service.TransactionServiceTest" time="0.023"/>
+  <testcase name="testCreateNewTransactionWith_InvalidTransactionType()" classname="au.com.cashapp.onlinebank.unit.service.TransactionServiceTest" time="0.01"/>
+  <testcase name="testCreateNewTransactionWith_Credit_Transaction_Type()" classname="au.com.cashapp.onlinebank.unit.service.TransactionServiceTest" time="0.013"/>
+  <system-out><![CDATA[2022-02-28 15:45:13:927 [est worker] INFO  ank.service.TransactionService  - Creating new transaction for accountId : 100
+2022-02-28 15:45:13:948 [est worker] INFO  ank.service.TransactionService  - Creating new transaction for accountId : 123
+2022-02-28 15:45:13:962 [est worker] INFO  ank.service.TransactionService  - Creating new transaction for accountId : 123
+2022-02-28 15:45:13:976 [est worker] INFO  ank.service.TransactionService  - Creating new transaction for accountId : 123
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - TransactionControllerTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>TransactionControllerTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/au.com.cashapp.onlinebank.unit.controller.html">au.com.cashapp.onlinebank.unit.controller</a> &gt; TransactionControllerTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">5</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">0.341s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">testCreateNewCreditTransactionSuccess()</td>
+<td class="success">0.047s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testCreateNewDebitTransactionSuccess()</td>
+<td class="success">0.195s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testCreateNewTransactionInvalidAccountId()</td>
+<td class="success">0.027s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testCreateNewTransactionInvalidTransaction()</td>
+<td class="success">0.043s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testCreateNewTransactionSystemError()</td>
+<td class="success">0.029s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>2022-02-28 15:45:11:853 [est worker] INFO  .WebMvcTestContextBootstrapper  - Neither @ContextConfiguration nor @ContextHierarchy found for test class [au.com.cashapp.onlinebank.unit.controller.TransactionControllerTest], using SpringBootContextLoader
+2022-02-28 15:45:11:867 [est worker] INFO  ingBootTestContextBootstrapper  - Found @SpringBootConfiguration au.com.cashapp.onlinebank.App for test class au.com.cashapp.onlinebank.unit.controller.TransactionControllerTest
+2022-02-28 15:45:11:870 [est worker] INFO  .WebMvcTestContextBootstrapper  - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2022-02-28 15:45:11:871 [est worker] INFO  .WebMvcTestContextBootstrapper  - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@64c32d25, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@9dafef6c, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@baa16472, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@2f818db0, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@13c1c957, org.springframework.test.context.support.DirtiesContextTestExecutionListener@817a8690, org.springframework.test.context.transaction.TransactionalTestExecutionListener@fc9549ff, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@9d183aab, org.springframework.test.context.event.EventPublishingTestExecutionListener@84d3df00, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@ef962ab5, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@8503418, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@bf6eba57, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@8f171761, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@50e01a7d, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@706f4cd]
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.6.3)
+
+2022-02-28 15:45:11:935 [est worker] INFO  ller.TransactionControllerTest  - Starting TransactionControllerTest using Java 11.0.7 on CMM-C02YN0M7JGH5 with PID 47270 (started by preethi.ramanujam in /Users/preethi.ramanujam/Documents/Preethi-coding-test/online-bank)
+2022-02-28 15:45:11:936 [est worker] INFO  ller.TransactionControllerTest  - No active profile set, falling back to default profiles: default
+2022-02-28 15:45:12:933 [est worker] INFO  b.SpringBootMockServletContext  - Initializing Spring TestDispatcherServlet ''
+2022-02-28 15:45:12:977 [est worker] INFO  ller.TransactionControllerTest  - Started TransactionControllerTest in 1.102 seconds (JVM running for 24.05)
+2022-02-28 15:45:13:152 [est worker] INFO  ntroller.TransactionController  - Entering activate phone number for customer 123
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /v1/accounts/123/transaction
+       Parameters = {}
+          Headers = [Content-Type:&quot;application/json;charset=UTF-8&quot;, Content-Length:&quot;42&quot;]
+             Body = {&quot;transactionType&quot;:&quot;WithDraw&quot;,&quot;amount&quot;:10}
+    Session Attrs = {}
+
+Handler:
+             Type = au.com.cashapp.onlinebank.controller.TransactionController
+           Method = au.com.cashapp.onlinebank.controller.TransactionController#createNewTransaction(long, TransactionRequest)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Content-Type:&quot;application/json&quot;]
+     Content type = application/json
+             Body = {&quot;balance&quot;:10}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2022-02-28 15:45:13:209 [est worker] INFO  ntroller.TransactionController  - Entering activate phone number for customer 123
+2022-02-28 15:45:13:253 [est worker] INFO  ntroller.TransactionController  - Entering activate phone number for customer 123
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /v1/accounts/123/transaction
+       Parameters = {}
+          Headers = [Content-Type:&quot;application/json;charset=UTF-8&quot;, Content-Length:&quot;41&quot;]
+             Body = {&quot;transactionType&quot;:&quot;Deposit&quot;,&quot;amount&quot;:10}
+    Session Attrs = {}
+
+Handler:
+             Type = au.com.cashapp.onlinebank.controller.TransactionController
+           Method = au.com.cashapp.onlinebank.controller.TransactionController#createNewTransaction(long, TransactionRequest)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Content-Type:&quot;application/json&quot;]
+     Content type = application/json
+             Body = {&quot;balance&quot;:10}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2022-02-28 15:45:13:298 [est worker] INFO  ntroller.TransactionController  - Entering activate phone number for customer 123
+2022-02-28 15:45:13:302 [est worker] ERROR ception.GlobalExceptionHandler  - null
+2022-02-28 15:45:13:327 [est worker] INFO  ntroller.TransactionController  - Entering activate phone number for customer 123
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 7.3.3</a> at 28 Feb. 2022, 3:45:14 pm</p>
+</div>
+</div>
+</body>
+</html>

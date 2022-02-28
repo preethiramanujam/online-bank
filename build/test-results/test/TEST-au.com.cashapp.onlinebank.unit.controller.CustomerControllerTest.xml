@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="au.com.cashapp.onlinebank.unit.controller.CustomerControllerTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2022-02-28T04:45:11" hostname="CMM-C02YN0M7JGH5" time="0.582">
+  <properties/>
+  <testcase name="testGetCustomerAccountDetailsSuccess()" classname="au.com.cashapp.onlinebank.unit.controller.CustomerControllerTest" time="0.52"/>
+  <testcase name="testGetCustomerAccountSystemFailure()" classname="au.com.cashapp.onlinebank.unit.controller.CustomerControllerTest" time="0.041"/>
+  <testcase name="testCreateNewTransactionInvalidAccountId()" classname="au.com.cashapp.onlinebank.unit.controller.CustomerControllerTest" time="0.02"/>
+  <system-out><![CDATA[2022-02-28 15:45:09:747 [est worker] INFO  .WebMvcTestContextBootstrapper  - Neither @ContextConfiguration nor @ContextHierarchy found for test class [au.com.cashapp.onlinebank.unit.controller.CustomerControllerTest], using SpringBootContextLoader
+2022-02-28 15:45:09:800 [est worker] INFO  ingBootTestContextBootstrapper  - Found @SpringBootConfiguration au.com.cashapp.onlinebank.App for test class au.com.cashapp.onlinebank.unit.controller.CustomerControllerTest
+2022-02-28 15:45:09:803 [est worker] INFO  .WebMvcTestContextBootstrapper  - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2022-02-28 15:45:09:804 [est worker] INFO  .WebMvcTestContextBootstrapper  - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@fad6a39, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@4e1a53f, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@88baff8a, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@b5b78ef0, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@6a7b6833, org.springframework.test.context.support.DirtiesContextTestExecutionListener@9fd4f485, org.springframework.test.context.transaction.TransactionalTestExecutionListener@11182e04, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@abf27631, org.springframework.test.context.event.EventPublishingTestExecutionListener@8fffc6b7, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@8129d8ae, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@7d58eb8d, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@b1281f02, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@c0eecc0, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@fd7515a, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@77275127]
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.6.3)
+
+2022-02-28 15:45:09:896 [est worker] INFO  troller.CustomerControllerTest  - Starting CustomerControllerTest using Java 11.0.7 on CMM-C02YN0M7JGH5 with PID 47270 (started by preethi.ramanujam in /Users/preethi.ramanujam/Documents/Preethi-coding-test/online-bank)
+2022-02-28 15:45:09:897 [est worker] INFO  troller.CustomerControllerTest  - No active profile set, falling back to default profiles: default
+2022-02-28 15:45:11:208 [est worker] INFO  b.SpringBootMockServletContext  - Initializing Spring TestDispatcherServlet ''
+2022-02-28 15:45:11:246 [est worker] INFO  troller.CustomerControllerTest  - Started CustomerControllerTest in 1.436 seconds (JVM running for 22.319)
+2022-02-28 15:45:11:512 [est worker] INFO  .controller.CustomerController  - Entering activate phone number for customer 1234
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /v1/customer/1234/account
+       Parameters = {}
+          Headers = []
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = au.com.cashapp.onlinebank.controller.CustomerController
+           Method = au.com.cashapp.onlinebank.controller.CustomerController#createNewTransaction(long)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Content-Type:"application/json"]
+     Content type = application/json
+             Body = {"id":1234,"accountList":[{"id":123,"customerId":1234,"status":null,"balance":300,"transactions":null}]}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2022-02-28 15:45:11:796 [est worker] INFO  .controller.CustomerController  - Entering activate phone number for customer 123
+2022-02-28 15:45:11:803 [est worker] ERROR ception.GlobalExceptionHandler  - null
+2022-02-28 15:45:11:834 [est worker] INFO  .controller.CustomerController  - Entering activate phone number for customer 123
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

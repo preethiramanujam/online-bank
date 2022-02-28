@@ -1,0 +1,204 @@
+openapi: 3.0.2
+
+info:
+  title: banking-api
+  version: 1.0.0
+  description: Online banking api
+
+servers:
+  - url: https://localhost:8080
+    variables:
+      basePath:
+        default: /banking/api
+
+paths:
+  '/v1/accounts/{id}/transaction':
+    post:
+      tags:
+        - transaction
+      summary: create a transaction in customer's bank account.
+      operationId: createTransaction
+      description: create transaction for a given bank account
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransactionRequest'
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+        - name: X-Correlation-Id
+          description: The correlation ID used for tracking logs(Optional)
+          required: false
+          in: header
+          schema:
+            type: string
+      responses:
+        201:
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionResponse'
+        400:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        415:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: The service is currently experiencing some technical issues
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  '/v1/customer/{customerId}/accounts':
+    get:
+      tags:
+        - customer
+      summary: get a customer's bank account details.
+      operationId: getCustomerAccounts
+      description: get customer's bank accounts
+      parameters:
+        - name: customerId
+          required: true
+          in: path
+          schema:
+            type: string
+        - name: X-Correlation-Id
+          description: The correlation ID used for tracking logs(Optional)
+          required: false
+          in: header
+          schema:
+            type: string
+      responses:
+        201:
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerResponse'
+        400:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        404:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: The service is currently experiencing some technical issues
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  '/v1/bank':
+    get:
+      tags:
+        - bank
+      summary: get bank details.
+      operationId: getBankDetails
+      description: get balance details of bank
+      parameters:
+        - name: X-Correlation-Id
+          description: The correlation ID used for tracking logs(Optional)
+          required: false
+          in: header
+          schema:
+            type: string
+      responses:
+        201:
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BankResponse'
+        400:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        404:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: The service is currently experiencing some technical issues
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    TransactionRequest:
+      type: object
+      $ref: '#/components/schemas/Transaction'
+    TransactionResponse:
+      type: object
+      properties:
+        balance:
+          type: number
+    CustomerResponse:
+      type: object
+      properties:
+        accounts:
+          description: 'List of customer accounts'
+          type: array
+          items:
+            $ref: '#/components/schemas/Account'
+    BankResponse:
+      type: object
+      properties:
+        balance:
+          description: 'Bank balance'
+          type: number
+    Account:
+      type: object
+      properties:
+        balance:
+          description: 'Account balance'
+          type: number
+        transactions:
+          description: 'Transactions under customers account'
+          type: array
+          items:
+            $ref: '#/components/schemas/Transaction'
+    Transaction:
+      type: object
+      properties:
+        amount:
+          description: 'Account balance'
+          type: number
+        transactionType:
+          description: 'Transaction type'
+          type: string
+      required:
+        - amount
+        - transactionType
+    Error:
+      type: object
+      properties:
+        errorCode:
+          type: string
+          description: The numeric error code representing that error
+        errorDescription:
+          type: string
+          description: Description of the error
