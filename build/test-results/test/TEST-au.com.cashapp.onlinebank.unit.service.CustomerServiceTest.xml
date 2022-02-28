@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="au.com.cashapp.onlinebank.unit.service.CustomerServiceTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-02-28T04:45:13" hostname="CMM-C02YN0M7JGH5" time="0.426">
-  <properties/>
-  <testcase name="testGetCustomerAccountDetailsWithInvalidCustId()" classname="au.com.cashapp.onlinebank.unit.service.CustomerServiceTest" time="0.415"/>
-  <testcase name="testGetCustomerAccountDetailsWithValidCustId()" classname="au.com.cashapp.onlinebank.unit.service.CustomerServiceTest" time="0.01"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

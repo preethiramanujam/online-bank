@@ -8,16 +8,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(path = "/v1")
+@RequestMapping(path = "/banking-api/v1")
 @Slf4j
 public class CustomerController {
 
     @Autowired
     private CustomerService customerService;
 
-    @GetMapping(path = "/customer/{id}/account", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> createNewTransaction(@PathVariable long id) {
-        log.info("Entering activate phone number for customer {}", id);
+    @GetMapping(path = "/customers/{id}/accounts", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> getCustomerAccountDetails(@PathVariable long id) {
+        log.info("Entering get customer account details {}", id);
         return ResponseEntity.ok(customerService.getCustomerAccountDetails(id));
     }
 }

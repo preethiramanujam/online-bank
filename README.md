@@ -33,10 +33,12 @@ The following design considerations were made:
                  │ Transaction │
                  └─────────────┘
 ```
+- Customer can create transactions on their account using account_id
+- Customer can retrieve all their accounts using customer_id. This will display balances of individual accounts.
 - Use of single endpoint for posting transactions. This is to avoid new endpoint per transactionType 
-and to align to restful standards.
+    and to align to restful standards.
 
-## To do
+## Enhancements suggested
 Given the time constraints, the following are to be considered in future release:
 - Add security to endpoints
 - Replace h2 in memory with proper db instance
@@ -44,6 +46,8 @@ Given the time constraints, the following are to be considered in future release
 - CRUD operations
 - Multi threaded Concurrency
 - Extend usecase on many to many relationship for customer-bankaccount
+- Repository classes for Customer and Transaction to be independently handle the entities.
+- Controller classes and request validation generated from swagger file using swagger codegen.
 
 ## Build & Run
 The project utilises Gradle Wrapper.
@@ -76,12 +80,21 @@ GET http://localhost:8080/index.html#/
 ```
 
 Post a transaction to customer's bank account with transaction type - withdraw/deposit. 
-Sample request part of the integration test
+Sample request part of the swagger documentation
 ```shell
-POST http://localhost:8080/v1/accounts/1001/transaction
+POST http://localhost:8080/v1/accounts/{account_id}/transaction
+{
+    "amount": 90,
+    "transactionType": "WITHDRAW|DEPOSIT"
+}
 ```
 Get customer's bank account details
 ```shell
-GET http://localhost:8080/v1/customer/1001/account
+GET http://localhost:8080/v1/customers/{customer_id}/accounts
+```
+## Test Coverage
+
+- Jacoco plugin is used for reporting test coverage. 
+- Html report can be found at /build/jacocoHtml
 
 

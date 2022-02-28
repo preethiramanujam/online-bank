@@ -30,20 +30,20 @@ public class CreditTransactionHandlerTest {
     private CreditTransactionHandler creditTransactionHandler;
 
     @Test
-    public void testisRightHandlerForTransaction_Credit_Return_True(){
-        assertTrue(creditTransactionHandler.isRightHandlerForTransaction("deposit"));
+    public void testIsRightHandlerForTransaction_Credit_Return_True(){
+        assertTrue(creditTransactionHandler.isRightHandlerForTransaction(DEPOSIT));
     }
 
     @Test
 
-    public void testisRightHandlerForTransaction_Debit_Return_False(){
-        assertFalse(creditTransactionHandler.isRightHandlerForTransaction("withdraw"));
+    public void testIsRightHandlerForTransaction_Debit_Return_False(){
+        assertFalse(creditTransactionHandler.isRightHandlerForTransaction(WITHDRAW));
     }
 
     @Test
     public void testHandleTransaction_Success(){
         Account account = getAccount();
-        TransactionRequest request = getTransactionRequest("deposit");
+        TransactionRequest request = getTransactionRequest(DEPOSIT);
         when(accountRepository.save(Mockito.any())).thenReturn(account);
 
         TransactionResponse response = creditTransactionHandler.handleTransaction(request, account);
@@ -54,7 +54,7 @@ public class CreditTransactionHandlerTest {
 
     @Test
     public void testHandleTransaction_DbFailure(){
-        TransactionRequest request = getTransactionRequest("deposit");
+        TransactionRequest request = getTransactionRequest(DEPOSIT);
 
         when(accountRepository.save(Mockito.any())).thenThrow(new IllegalArgumentException());
 

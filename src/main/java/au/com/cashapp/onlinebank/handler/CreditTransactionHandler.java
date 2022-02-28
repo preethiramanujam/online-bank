@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 import java.math.BigDecimal;
 
 import static au.com.cashapp.onlinebank.mapper.AccountMapper.mapAccountEntity;
-import static au.com.cashapp.onlinebank.model.TransactionType.CREDIT;
+import static au.com.cashapp.onlinebank.model.TransactionType.DEPOSIT;
 
 @Component
 @RequiredArgsConstructor
@@ -25,7 +25,7 @@ public class CreditTransactionHandler implements TransactionHandler {
     @Override
     public boolean isRightHandlerForTransaction(String transactionType) {
         log.info("Checking isRightHandlerFor credit transaction {}", transactionType);
-        return CREDIT.getOperation().equals(transactionType);
+        return DEPOSIT.name().equals(transactionType);
     }
 
     @Override
@@ -47,6 +47,7 @@ public class CreditTransactionHandler implements TransactionHandler {
 
         TransactionResponse response = new TransactionResponse();
         response.setBalance(newBalance);
+        // To-Be returned. response.setTransactionId("id")
         return response;
     }
 }

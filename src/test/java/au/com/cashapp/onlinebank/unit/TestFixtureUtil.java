@@ -10,6 +10,8 @@ public class TestFixtureUtil {
 
     public static final int VALID_CUSTOMER_ID = 1234;
     public static final Long VALID_ACCT_ID = 123L;
+    public static final String DEPOSIT = "DEPOSIT";
+    public static final String WITHDRAW = "WITHDRAW";
 
     public static Account getAccount() {
         Account account = new Account();

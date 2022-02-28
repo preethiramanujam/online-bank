@@ -28,10 +28,11 @@ public class TransactionService {
         Account account = accountRepository.findById(accountId).orElseThrow(() ->
                 new InvalidAccountException("Could not find account for provided account id"));
 
+        //Iterate through the handlers to find the right handlers and handleTransaction. Validation of the transactionType to be done at the api level .
         TransactionResponse response = transactionHandlers.stream()
                 .filter(transactionHandler -> transactionHandler.isRightHandlerForTransaction(transactionRequest.getTransactionType()))
                 .map(transactionHandler -> transactionHandler.handleTransaction(transactionRequest, account))
-                .findFirst().orElseThrow(() -> new InvalidTransactionException("Transaction type invalid"));
+                .findFirst().orElseThrow(() -> new InvalidTransactionException("Transaction type invalid. Allowed values WITHDRAW, DEPOSIT"));
         return response;
     }
 }

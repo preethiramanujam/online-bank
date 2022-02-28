@@ -28,9 +28,6 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 public class TransactionServiceTest {
 
-    public static final String WITH_DRAW = "WithDraw";
-    public static final String DEPOSIT = "Deposit";
-
     @Mock
     private AccountRepository accountRepository;
 
@@ -53,10 +50,10 @@ public class TransactionServiceTest {
     public void testCreateNewTransactionWith_Debit_Transaction_Type() {
 
         //Given
-        TransactionRequest transactionRequest = getTransactionRequest(WITH_DRAW);
+        TransactionRequest transactionRequest = getTransactionRequest(WITHDRAW);
 
         //When
-        when(debitTransactionHandler.isRightHandlerForTransaction(WITH_DRAW)).thenReturn(true);
+        when(debitTransactionHandler.isRightHandlerForTransaction(WITHDRAW)).thenReturn(true);
         when(debitTransactionHandler.handleTransaction(any(TransactionRequest.class), any(Account.class))).thenReturn(new TransactionResponse());
         when(accountRepository.findById(VALID_ACCT_ID)).thenReturn(Optional.of(getAccount()));
 

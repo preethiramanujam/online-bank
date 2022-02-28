@@ -15,6 +15,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.math.BigDecimal;
 
+import static au.com.cashapp.onlinebank.unit.TestFixtureUtil.DEPOSIT;
+import static au.com.cashapp.onlinebank.unit.TestFixtureUtil.WITHDRAW;
 import static au.com.cashapp.onlinebank.unit.TestFixtureUtil.getAccount;
 import static au.com.cashapp.onlinebank.unit.TestFixtureUtil.getTransactionRequest;
 import static org.junit.jupiter.api.Assertions.*;
@@ -31,20 +33,20 @@ public class DebitTransactionHandlerTest {
     private DebitTransactionHandler debitTransactionHandler;
 
     @Test
-    public void testisRightHandlerForTransaction_Credit_Return_True(){
-        assertTrue(debitTransactionHandler.isRightHandlerForTransaction("withdraw"));
+    public void testisRightHandlerForTransaction_Debit_Return_True(){
+        assertTrue(debitTransactionHandler.isRightHandlerForTransaction(WITHDRAW));
     }
 
     @Test
 
-    public void testisRightHandlerForTransaction_Debit_Return_False(){
-        assertFalse(debitTransactionHandler.isRightHandlerForTransaction("deposit"));
+    public void testisRightHandlerForTransaction_Credit_Return_False(){
+        assertFalse(debitTransactionHandler.isRightHandlerForTransaction(DEPOSIT));
     }
 
     @Test
     public void testHandleTransaction_Success(){
         Account account = getAccount();
-        TransactionRequest request = getTransactionRequest("deposit");
+        TransactionRequest request = getTransactionRequest(WITHDRAW);
         when(accountRepository.save(Mockito.any())).thenReturn(account);
 
         TransactionResponse response = debitTransactionHandler.handleTransaction(request, account);
@@ -55,7 +57,7 @@ public class DebitTransactionHandlerTest {
 
     @Test
     public void testHandleTransaction_InvalidTransaction_AmountGreaterThanBalance(){
-        TransactionRequest request = getTransactionRequest("deposit");
+        TransactionRequest request = getTransactionRequest(DEPOSIT);
         request.setAmount(BigDecimal.valueOf(400));
 
         Exception exception = assertThrows(InvalidTransactionException.class, () ->
@@ -66,7 +68,7 @@ public class DebitTransactionHandlerTest {
 
     @Test
     public void testHandleTransaction_DbFailure(){
-        TransactionRequest request = getTransactionRequest("deposit");
+        TransactionRequest request = getTransactionRequest(DEPOSIT);
 
         when(accountRepository.save(Mockito.any())).thenThrow(new IllegalArgumentException());
 
