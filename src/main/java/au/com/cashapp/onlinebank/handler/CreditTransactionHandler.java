@@ -4,7 +4,6 @@ import au.com.cashapp.onlinebank.entity.Account;
 import au.com.cashapp.onlinebank.model.TransactionRequest;
 import au.com.cashapp.onlinebank.model.TransactionResponse;
 import au.com.cashapp.onlinebank.repository.AccountRepository;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -12,20 +11,19 @@ import org.springframework.stereotype.Component;
 import java.math.BigDecimal;
 
 import static au.com.cashapp.onlinebank.mapper.AccountMapper.mapAccountEntity;
-import static au.com.cashapp.onlinebank.model.TransactionType.CREDIT;
+import static au.com.cashapp.onlinebank.model.TransactionType.DEPOSIT;
 
 @Component
-@RequiredArgsConstructor
 @Slf4j
 public class CreditTransactionHandler implements TransactionHandler {
 
     @Autowired
-    protected AccountRepository accountRepository;
+    private AccountRepository accountRepository;
 
     @Override
     public boolean isRightHandlerForTransaction(String transactionType) {
         log.info("Checking isRightHandlerFor credit transaction {}", transactionType);
-        return CREDIT.getOperation().equals(transactionType);
+        return DEPOSIT.name().equals(transactionType);
     }
 
     @Override
@@ -43,7 +41,8 @@ public class CreditTransactionHandler implements TransactionHandler {
         mapAccountEntity(transactionRequest, account, newBalance);
         accountRepository.save(account);
 
-        log.info("Successfully handled credit transaction for account:  {} with new balance: {}", account.getId(), newBalance);
+        log.info("Successfully handled credit transaction for account:  {} with new balance: {}", account.getId(),
+            newBalance);
 
         TransactionResponse response = new TransactionResponse();
         response.setBalance(newBalance);

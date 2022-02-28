@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(path = "/v1")
+@RequestMapping(path = "/banking-api/v1")
 @Slf4j
 public class CustomerController {
 

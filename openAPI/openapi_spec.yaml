@@ -62,7 +62,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
 
-  '/v1/customer/{customerId}/accounts':
+  '/v1/customers/{customerId}/accounts':
     get:
       tags:
         - customer

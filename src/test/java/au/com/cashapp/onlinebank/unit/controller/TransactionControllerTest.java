@@ -16,6 +16,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
+import static au.com.cashapp.onlinebank.unit.TestFixtureUtil.DEPOSIT;
+import static au.com.cashapp.onlinebank.unit.TestFixtureUtil.WITHDRAW;
 import static au.com.cashapp.onlinebank.unit.TestFixtureUtil.getTransactionRequest;
 import static au.com.cashapp.onlinebank.unit.TestFixtureUtil.getTransactionResponse;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -47,15 +49,15 @@ public class TransactionControllerTest {
     @Test
     void testCreateNewCreditTransactionSuccess() throws Exception {
         ObjectMapper objectMapper = new ObjectMapper();
-        TransactionRequest transactionRequest = getTransactionRequest("Deposit");
+        TransactionRequest transactionRequest = getTransactionRequest(DEPOSIT);
         TransactionResponse transactionResponse = getTransactionResponse();
         when(transactionService.createNewTransaction(ACCOUNT_ID, transactionRequest)).thenReturn(transactionResponse);
 
-        MvcResult result = mockMvc.perform(post("/v1/accounts/123/transaction")
-                .contentType(MediaType.APPLICATION_JSON).content(asJsonString(transactionRequest)))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andReturn();
+        MvcResult result = mockMvc.perform(post("/banking-api/v1/accounts/123/transaction")
+            .contentType(MediaType.APPLICATION_JSON).content(asJsonString(transactionRequest)))
+            .andDo(print())
+            .andExpect(status().isOk())
+            .andReturn();
 
         String actualResponseBody = result.getResponse().getContentAsString();
         String expectedResponse = objectMapper.writeValueAsString(transactionResponse);
@@ -65,15 +67,15 @@ public class TransactionControllerTest {
     @Test
     void testCreateNewDebitTransactionSuccess() throws Exception {
         ObjectMapper objectMapper = new ObjectMapper();
-        TransactionRequest transactionRequest = getTransactionRequest("WithDraw");
+        TransactionRequest transactionRequest = getTransactionRequest(WITHDRAW);
         TransactionResponse transactionResponse = getTransactionResponse();
         when(transactionService.createNewTransaction(ACCOUNT_ID, transactionRequest)).thenReturn(transactionResponse);
 
-        MvcResult result = mockMvc.perform(post("/v1/accounts/123/transaction")
-                .contentType(MediaType.APPLICATION_JSON).content(asJsonString(transactionRequest)))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andReturn();
+        MvcResult result = mockMvc.perform(post("/banking-api/v1/accounts/123/transaction")
+            .contentType(MediaType.APPLICATION_JSON).content(asJsonString(transactionRequest)))
+            .andDo(print())
+            .andExpect(status().isOk())
+            .andReturn();
 
         String actualResponseBody = result.getResponse().getContentAsString();
         String expectedResponse = objectMapper.writeValueAsString(transactionResponse);
@@ -84,32 +86,32 @@ public class TransactionControllerTest {
     void testCreateNewTransactionInvalidTransaction() throws Exception {
         TransactionRequest transactionRequest = getTransactionRequest("InvalidTransaction");
         when(transactionService.createNewTransaction(ACCOUNT_ID, transactionRequest))
-                .thenThrow(new InvalidTransactionException("Invalid transaction"));
-        mockMvc.perform(post("/v1/accounts/123/transaction")
-                .contentType(MediaType.APPLICATION_JSON).content(asJsonString(transactionRequest)))
-                .andExpect(status().is4xxClientError())
-                .andReturn();
+            .thenThrow(new InvalidTransactionException("Invalid transaction"));
+        mockMvc.perform(post("/banking-api/v1/accounts/123/transaction")
+            .contentType(MediaType.APPLICATION_JSON).content(asJsonString(transactionRequest)))
+            .andExpect(status().is4xxClientError())
+            .andReturn();
     }
 
     @Test
     void testCreateNewTransactionInvalidAccountId() throws Exception {
         TransactionRequest transactionRequest = getTransactionRequest("InvalidAccount");
         when(transactionService.createNewTransaction(ACCOUNT_ID, transactionRequest))
-                .thenThrow(new InvalidAccountException("Invalid account id"));
-        mockMvc.perform(post("/v1/accounts/123/transaction")
-                .contentType(MediaType.APPLICATION_JSON).content(asJsonString(transactionRequest)))
-                .andExpect(status().is4xxClientError())
-                .andReturn();
+            .thenThrow(new InvalidAccountException("Invalid account id"));
+        mockMvc.perform(post("/banking-api/v1/accounts/123/transaction")
+            .contentType(MediaType.APPLICATION_JSON).content(asJsonString(transactionRequest)))
+            .andExpect(status().is4xxClientError())
+            .andReturn();
     }
 
     @Test
     void testCreateNewTransactionSystemError() throws Exception {
         TransactionRequest transactionRequest = getTransactionRequest("InvalidAccount");
         when(transactionService.createNewTransaction(ACCOUNT_ID, transactionRequest))
-                .thenThrow(new RuntimeException());
-        mockMvc.perform(post("/v1/accounts/123/transaction")
-                .contentType(MediaType.APPLICATION_JSON).content(asJsonString(transactionRequest)))
-                .andExpect(status().is5xxServerError())
-                .andReturn();
+            .thenThrow(new RuntimeException());
+        mockMvc.perform(post("/banking-api/v1/accounts/123/transaction")
+            .contentType(MediaType.APPLICATION_JSON).content(asJsonString(transactionRequest)))
+            .andExpect(status().is5xxServerError())
+            .andReturn();
     }
 }

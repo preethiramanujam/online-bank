@@ -5,7 +5,6 @@ import au.com.cashapp.onlinebank.exception.InvalidTransactionException;
 import au.com.cashapp.onlinebank.model.TransactionRequest;
 import au.com.cashapp.onlinebank.model.TransactionResponse;
 import au.com.cashapp.onlinebank.repository.AccountRepository;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -13,20 +12,19 @@ import org.springframework.stereotype.Component;
 import java.math.BigDecimal;
 
 import static au.com.cashapp.onlinebank.mapper.AccountMapper.mapAccountEntity;
-import static au.com.cashapp.onlinebank.model.TransactionType.DEBIT;
+import static au.com.cashapp.onlinebank.model.TransactionType.WITHDRAW;
 
 @Component
-@RequiredArgsConstructor
 @Slf4j
 public class DebitTransactionHandler implements TransactionHandler {
 
     @Autowired
-    protected AccountRepository accountRepository;
+    private AccountRepository accountRepository;
 
     @Override
     public boolean isRightHandlerForTransaction(String transactionType) {
         log.info("Checking isRightHandlerFor debit transaction {}", transactionType);
-        return DEBIT.getOperation().equals(transactionType);
+        return WITHDRAW.name().equals(transactionType);
     }
 
     @Override
@@ -42,7 +40,8 @@ public class DebitTransactionHandler implements TransactionHandler {
             mapAccountEntity(transactionRequest, account, newBalance);
             accountRepository.save(account);
 
-            log.info("Successfully handled debit transaction for account: {} with new balance: {}", account.getId(), newBalance);
+            log.info("Successfully handled debit transaction for account: {} with new balance: {}", account.getId(),
+                newBalance);
         } else {
             log.error("Invalid transaction for the amount provided");
             throw new InvalidTransactionException("Insufficient funds to proceed with transaction");

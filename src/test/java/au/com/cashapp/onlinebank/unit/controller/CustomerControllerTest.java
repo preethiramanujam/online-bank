@@ -46,7 +46,7 @@ public class CustomerControllerTest {
         customerResponse.setId(CUSTOMER_ID);
         when(customerService.getCustomerAccountDetails(CUSTOMER_ID)).thenReturn(customerResponse);
 
-        MvcResult result = mockMvc.perform(get("/v1/customer/1234/account"))
+        MvcResult result = mockMvc.perform(get("/banking-api/v1/customers/1234/accounts"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andReturn();
@@ -59,7 +59,7 @@ public class CustomerControllerTest {
     @Test
     void testGetCustomerAccountSystemFailure() throws Exception {
         when(customerService.getCustomerAccountDetails(123)).thenThrow(new RuntimeException());
-        mockMvc.perform(get("/v1/customer/123/account"))
+        mockMvc.perform(get("/banking-api/v1/customers/123/accounts"))
                 .andExpect(status().is5xxServerError())
                 .andReturn();
     }
@@ -67,7 +67,7 @@ public class CustomerControllerTest {
     @Test
     void testCreateNewTransactionInvalidAccountId() throws Exception {
         when(customerService.getCustomerAccountDetails(123)).thenThrow(new InvalidAccountException("Invalid account id"));
-        mockMvc.perform(get("/v1/customer/123/account"))
+        mockMvc.perform(get("/banking-api/v1/customers/123/accounts"))
                 .andExpect(status().is4xxClientError())
                 .andReturn();
     }

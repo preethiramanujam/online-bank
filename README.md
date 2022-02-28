@@ -47,6 +47,8 @@ Given the time constraints, the following are to be considered in future release
 - Multi threaded Concurrency
 - Extend usecase on many to many relationship for customer-bankaccount
 - Repository classes for Customer and Transaction to be independently handle the entities.
+- Controller classes and request validation generated from swagger file using swagger codegen.
+- Introducing model classes for Account object, instead of entity being passed to frontend. 
 
 ## Build & Run
 The project utilises Gradle Wrapper.
@@ -79,12 +81,21 @@ GET http://localhost:8080/index.html#/
 ```
 
 Post a transaction to customer's bank account with transaction type - withdraw/deposit. 
-Sample request part of the integration test
+Sample request part of the swagger documentation
 ```shell
 POST http://localhost:8080/v1/accounts/{account_id}/transaction
+{
+    "amount": 90,
+    "transactionType": "WITHDRAW|DEPOSIT"
+}
 ```
 Get customer's bank account details
 ```shell
-GET http://localhost:8080/v1/customer/{customer_id}/account
+GET http://localhost:8080/v1/customers/{customer_id}/accounts
+```
+## Test Coverage
+
+- Jacoco plugin is used for reporting test coverage. 
+- Html report can be found at /build/jacocoHtml
 
 
