@@ -18,7 +18,7 @@ public class AccountMapper {
     private static Transaction mapTransactionEntity(TransactionRequest transactionRequest, BigDecimal newBalance) {
         Transaction transaction = new Transaction();
         transaction.setAmount(transactionRequest.getAmount());
-        //transaction.setTransactionType(transactionRequest.getTransactionType());
+        transaction.setTransactionType(transactionRequest.getTransactionType());
         transaction.setRemainingBalance(newBalance);
         return transaction;
 

@@ -1,2 +1,18 @@
 # Project exclude paths
+build/
 /out/
+
+.settings
+*/.settings
+*.project
+*.classpath
+
+*.class
+**/build/
+**/bin/
+
+# Gradle
+.idea/**/gradle.xml
+.idea/**/libraries
+.idea/checkstyle-idea.xml
+.idea/compiler.xml

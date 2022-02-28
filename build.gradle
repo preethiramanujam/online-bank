@@ -1,6 +1,7 @@
 plugins {
     id 'org.springframework.boot' version '2.6.3'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id "org.hidetake.swagger.generator" version "2.19.1"
     id 'java'
     id 'jacoco'
 }
@@ -22,6 +23,7 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    swaggerUI 'org.webjars:swagger-ui:3.10.0'
     compileOnly 'org.projectlombok:lombok'
     runtimeOnly 'com.h2database:h2'
     annotationProcessor 'org.projectlombok:lombok'
@@ -40,3 +42,16 @@ jacocoTestReport {
         html.outputLocation = layout.buildDirectory.dir('jacocoHtml')
     }
 }
+
+swaggerSources {
+    api {
+        afterEvaluate {
+            inputFile = file("$projectDir/openAPI/openapi_spec.yaml")
+            ui {
+                outputDir = file("$buildDir/resources/main/static")
+            }
+        }
+    }
+}
+
+compileJava.dependsOn generateSwaggerUIApi

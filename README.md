@@ -12,7 +12,7 @@ The project utilises the following technologies:
 - Spring Boot
 - Gradle
 - H2 in memory as the data store (for simplicity)
-- API specifications is provided as swagger file under 'openAPI' folder
+- API specifications is provided as swagger file under 'openAPI' folder and hosted using swaggerUI
 
 ## Design considerations
 The following design considerations were made:
@@ -68,24 +68,20 @@ The project is preloaded with sample customer data with associated accounts and 
 | 1001   | 1001 | 100 |
 | 1002   | 1002 | 200 |
 
-### Bank
-| id | name | balance |
-| --- | --- | --- |
-| 1001   | Cash app online bank | 300 |
-
 ## Endpoints
+
+Swagger documentation
+```
+GET http://localhost:8080/index.html#/
+```
+
 Post a transaction to customer's bank account with transaction type - withdraw/deposit. 
 Sample request part of the integration test
 ```shell
-POST http://localhost:8080/v1/accounts/{id}/transaction
+POST http://localhost:8080/v1/accounts/1001/transaction
 ```
 Get customer's bank account details
 ```shell
+GET http://localhost:8080/v1/customer/1001/account
 
-GET http://localhost:8080/v1/customer/{id}/accounts
-```
 
-Get Bank balance details
-```shell
-http://localhost:8080/v1/bank
-```

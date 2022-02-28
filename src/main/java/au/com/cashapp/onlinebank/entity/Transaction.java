@@ -17,5 +17,5 @@ public class Transaction {
     private long id;
     private BigDecimal amount;
     private BigDecimal remainingBalance;
-    private TransactionType transactionType;
+    private String transactionType;
 }

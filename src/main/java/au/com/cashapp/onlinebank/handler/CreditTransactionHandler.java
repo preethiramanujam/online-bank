@@ -33,7 +33,8 @@ public class CreditTransactionHandler implements TransactionHandler {
         log.info("Handling credit transaction request for account {}", account.getId());
 
         BigDecimal currentAccountBalance = account.getBalance();
-        //Add the new amount to existing balance for credit operation
+
+        //Add the new amount to existing balance for credit operation. CurrentBalance initialized to have non null value
         BigDecimal newBalance = currentAccountBalance.add(transactionRequest.getAmount());
 
         // TO-Do Saving transaction separately and returning in the response.
