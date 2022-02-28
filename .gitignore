@@ -1,6 +1,7 @@
 # Project exclude paths
-build/
+/build/
 /out/
+logs/
 
 .settings
 */.settings

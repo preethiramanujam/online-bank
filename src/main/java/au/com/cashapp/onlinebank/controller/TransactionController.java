@@ -20,7 +20,7 @@ public class TransactionController {
 
     @PostMapping(path = "/accounts/{id}/transaction", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> createNewTransaction(@PathVariable long id, @RequestBody TransactionRequest request) {
-        log.info("Entering activate phone number for customer {}", id);
+        log.info("Entering create new transaction for id {}", id);
         return ResponseEntity.ok(transactionService.createNewTransaction(id, request));
     }
 }

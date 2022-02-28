@@ -47,6 +47,7 @@ public class CreditTransactionHandler implements TransactionHandler {
 
         TransactionResponse response = new TransactionResponse();
         response.setBalance(newBalance);
+        // To-Be returned. response.setTransactionId("id")
         return response;
     }
 }
