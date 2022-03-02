@@ -83,7 +83,7 @@ GET http://localhost:8080/index.html#/
 Post a transaction to customer's bank account with transaction type - withdraw/deposit. 
 Sample request part of the swagger documentation
 ```shell
-POST http://localhost:8080/v1/accounts/{account_id}/transaction
+POST http://localhost:8080/banking-api/v1/accounts/{account_id}/transaction
 {
     "amount": 90,
     "transactionType": "WITHDRAW|DEPOSIT"
@@ -91,7 +91,7 @@ POST http://localhost:8080/v1/accounts/{account_id}/transaction
 ```
 Get customer's bank account details
 ```shell
-GET http://localhost:8080/v1/customers/{customer_id}/accounts
+GET http://localhost:8080/banking-api/v1/customers/{customer_id}/accounts
 ```
 ## Test Coverage
 
